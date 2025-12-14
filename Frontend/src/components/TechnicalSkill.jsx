@@ -37,7 +37,7 @@ const TechnicalSkill = () => {
             <b>MY TECHNICAL SKILLS</b>
           </h5>
 
-          <p
+          <div
             style={{
               color: themeObj[theme].tx2,
             }}
@@ -53,7 +53,7 @@ const TechnicalSkill = () => {
               products, writing clean code, and continuously improving my craft
               by learning new tools and techniques.
             </p>
-          </p>
+          </div>
         </div>
         <div>
           <div className="d-flex flex-wrap gap-2 ">

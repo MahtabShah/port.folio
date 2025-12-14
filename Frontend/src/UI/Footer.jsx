@@ -52,29 +52,30 @@ const FormFooter = () => {
   const [feedback, setFeedback] = useState("");
 
   const { theme, themeObj } = useContext(themeContext);
+  console.log(import.meta.env.VITE_URL);
 
   const HandelSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const res = await axios.post(`${process.env.API_URL}/feedback`, {
-        email: email.trim(),
-        username: username.trim(),
-        feedback: feedback.trim(),
-      });
+    // try {
+    //   const res = await axios.post(`${process.env.API_URL}/feedback`, {
+    //     email: email.trim(),
+    //     username: username.trim(),
+    //     feedback: feedback.trim(),
+    //   });
 
-      console.log("Submitted feedback ! Thanks for feedback", res);
+    //   console.log("Submitted feedback ! Thanks for feedback", res);
 
-      if (res.status) {
-        Flash("Submitted feedback ! Thanks for feedback", "bg-success");
-        setUsername("");
-        setEmail("");
-        setFeedback("");
-      } else {
-        Flash("Error found ! Try again...", "bg-danger");
-      }
-    } catch (error) {
-      Flash(error.message, "bg-danger");
-    }
+    //   if (res.status) {
+    //     Flash("Submitted feedback ! Thanks for feedback", "bg-success");
+    //     setUsername("");
+    //     setEmail("");
+    //     setFeedback("");
+    //   } else {
+    //     Flash("Error found ! Try again...", "bg-danger");
+    //   }
+    // } catch (error) {
+    //   Flash(error.message, "bg-danger");
+    // }
   };
   return (
     <StyledWrapper>
