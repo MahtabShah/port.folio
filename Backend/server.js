@@ -3,9 +3,9 @@ import cors from "cors";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import Feedback from "./feedback.js";
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
 
-dotenv.config();
+// dotenv.config();
 
 const Frontend_URL = process.env.VITE_URL;
 const MONGO_URL = process.env.MONGO_URL;
