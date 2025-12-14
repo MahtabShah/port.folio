@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import Feedback from "./feedback.js";
 
 const Frontend_URL = process.env.VITE_URL;
+const MONGO_URL = process.env.MONGO_URL;
 const app = express();
 app.use(
   cors({
@@ -17,7 +18,7 @@ app.use(bodyParser.json());
 let ConnectionSuccess = false;
 const connctDB = () => {
   mongoose
-    .connect("mongodb://127.0.0.1:27017/portfolio")
+    .connect(MONGO_URL)
     .then(() => {
       console.log("connection suceessfull");
       ConnectionSuccess = true;
