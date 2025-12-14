@@ -1,0 +1,7 @@
+body {
+  background: repeating-linear-gradient(100deg, #0e1116, #0d1117);
+}
+
+#root {
+  margin: auto;
+}
