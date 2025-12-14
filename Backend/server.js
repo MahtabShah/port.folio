@@ -35,7 +35,7 @@ app.get("/", (req, res) => {
   if (!ConnectionSuccess) connctDB();
 });
 
-app.get("/feedback", async () => {
+app.get("/feedback", async (req, res) => {
   const fbs = await Feedback.find({});
   res.send(fbs);
 });
