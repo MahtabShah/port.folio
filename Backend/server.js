@@ -34,6 +34,11 @@ app.get("/", (req, res) => {
   if (!ConnectionSuccess) connctDB();
 });
 
+app.get("/feedback", async () => {
+  const fbs = await Feedback.find({});
+  res.send(fbs);
+});
+
 app.post("/feedback", async (req, res) => {
   const { username, email, feedback } = req.body;
   const fb = new Feedback({ username, feedback, email });
