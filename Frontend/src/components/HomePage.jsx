@@ -66,7 +66,7 @@ function HomePage() {
 
   return (
     <div className="d-flex">
-      <div className="home-parent pt-2 " id="Home" data-deg="40deg">
+      <div className="home-parent pt-2 w-100" id="Home" data-deg="40deg">
         <div
           className={`top-0 w-100 navbar position-fixed d-flex`}
           style={{
