@@ -3,7 +3,7 @@ import Social from "./Social";
 import axios from "axios";
 import { LuLinkedin, LuGithub, LuYoutube } from "react-icons/lu";
 import { RiDiscordFill, RiMessageLine, RiWhatsappFill } from "react-icons/ri";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { themeContext } from "../context/theme";
 
 const socialLinks = [
@@ -51,6 +51,7 @@ const FormFooter = () => {
   const [email, setEmail] = useState("");
   const [feedback, setFeedback] = useState("");
   const [loading, setLoading] = useState(false);
+  const [feedbacks, setFeedbacks] = useState(null);
 
   const { theme, themeObj } = useContext(themeContext);
 
@@ -82,6 +83,17 @@ const FormFooter = () => {
       setLoading(false);
     }
   };
+
+  const fetch_fbs = async () => {
+    const res = await axios.get(`http://localhost:3000/feedback`);
+    console.log(res.data);
+    setFeedbacks(res.data);
+  };
+
+  useEffect(() => {
+    fetch_fbs();
+  }, []);
+
   return (
     <StyledWrapper>
       {/* {Flash("Submitted feedback ! Thanks for feedback")} */}
@@ -201,6 +213,37 @@ const FormFooter = () => {
           })}
         </div>
       </div>
+
+      {feedbacks && (
+        <div
+          className="media d-flex fb-m overflow-auto"
+          style={{ color: themeObj[theme].tx2 }}
+        >
+          {feedbacks.map((f, i) => {
+            return (
+              <div
+                className="p-3 rounded-3"
+                key={"feed" + i}
+                style={{
+                  color: themeObj[theme].tx2,
+                  border: `1px solid ${themeObj[theme].br1}`,
+                  background: `linear-gradient(180deg, ${themeObj[theme].grd1}, ${themeObj[theme].grd2} 60%)`,
+                }}
+              >
+                <div>{f.username}</div>
+                <div className="small mb-2">{f.email}</div>
+                <div
+                  className="pt-2"
+                  style={{ borderTop: `1px solid ${themeObj[theme].br1}` }}
+                >
+                  {f.feedback}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
       <div
         className="mt-5"
         style={{
@@ -345,6 +388,15 @@ const StyledWrapper = styled.div`
     100% {
       transform: translateY(5px);
     }
+  }
+
+  .fb-m {
+    max-width: 100%;
+  }
+
+  .fb-m::-webkit-scrollbar {
+    width: 0;
+    height: 0;
   }
 `;
 
