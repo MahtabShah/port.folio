@@ -50,11 +50,14 @@ const FormFooter = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [feedback, setFeedback] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const { theme, themeObj } = useContext(themeContext);
 
   const HandelSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
     try {
       const res = await axios.post(`${import.meta.env.VITE_URL}/feedback`, {
         email: email.trim(),
@@ -69,11 +72,14 @@ const FormFooter = () => {
         setUsername("");
         setEmail("");
         setFeedback("");
+        setLoading(false);
       } else {
         Flash("Error found ! Try again...", "bg-danger");
       }
     } catch (error) {
       Flash(error.message, "bg-danger");
+    } finally {
+      setLoading(false);
     }
   };
   return (
@@ -150,8 +156,17 @@ const FormFooter = () => {
             <button
               type="submit"
               className="btn btn-outline-info px-4 mt-3 mb-4"
+              disabled={loading && true}
             >
-              Submit Feedback
+              {loading ? (
+                <div className="src-spin d-flex gap-2 align-items-center justify-content-center">
+                  <span className="s1"></span>
+                  <span className="s2"></span>
+                  <span className="s3"></span>
+                </div>
+              ) : (
+                "Submit Feedback"
+              )}
             </button>
           </form>
         </div>
@@ -225,7 +240,7 @@ export const Flash = (msg, cls) => {
   div.append(msgdiv);
 
   setTimeout(() => {
-    msgdiv.style.transform = `translateX(-100%)`;
+    msgdiv.style.transform = `translateX(-110%)`;
   }, 1000);
 
   setTimeout(() => {
@@ -293,6 +308,43 @@ const StyledWrapper = styled.div`
   .ssl-icon {
     height: min-content;
     max-width: 500px;
+  }
+
+  .src-spin {
+    width: 40px;
+    height: 23px;
+  }
+
+  .src-spin span {
+    // border: 1px solid red;
+    width: 10px;
+    aspect-ratio: 1/1 !important;
+    border-radius: 50%;
+    background: #28dbffff;
+  }
+
+  .s1 {
+    animation: updown 1s ease-in-out infinite;
+  }
+
+  .s2 {
+    animation: updown 1s ease-in-out 0.1s infinite;
+  }
+
+  .s3 {
+    animation: updown 1s ease-in-out 0.2s infinite;
+  }
+
+  @keyframes updown {
+    0% {
+      transform: translateY(5px);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+    100% {
+      transform: translateY(5px);
+    }
   }
 `;
 

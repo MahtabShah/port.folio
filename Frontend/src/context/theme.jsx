@@ -12,8 +12,8 @@ const ThemeProvider = ({ children }) => {
       tx1: "#050608ff", // Deep near-black - ठीक है
       tx2: "#1f1825ff", // थोड़ा richer, less muddy purple-black
       tx3: "#62586aff", // थोड़ा softer mid-tone contrast
-      bg1: "#eedfeeff", // थोड़ा lighter और थोड़ा transparent
-      bg2: "#f0eaf6ff", // Cleaner off-white with subtle lavender
+      bg1: "#ede4edff", // थोड़ा lighter और थोड़ा transparent
+      bg2: "#f2edf7ff", // Cleaner off-white with subtle lavender
       bg3: "#f7f5ffff", // थोड़ा softer mid-background
       br1: "#af91fbff", // थोड़ा less saturated border
       br2: "#cdbce9ff", // Softer secondary border
