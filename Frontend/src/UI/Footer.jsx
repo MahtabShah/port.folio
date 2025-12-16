@@ -216,7 +216,7 @@ const FormFooter = () => {
 
       {feedbacks && (
         <div
-          className="media fb-m overflow-auto"
+          className="media  px-2 fb-m overflow-auto"
           style={{ color: themeObj[theme].tx2 }}
         >
           {feedbacks.map((f, i) => {
