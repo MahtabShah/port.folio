@@ -85,7 +85,7 @@ const FormFooter = () => {
   };
 
   const fetch_fbs = async () => {
-    const res = await axios.get(`http://localhost:3000/feedback`);
+    const res = await axios.get(`${import.meta.env.VITE_URL}/feedback`);
     console.log(res.data);
     setFeedbacks(res.data);
   };
