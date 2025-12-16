@@ -229,7 +229,7 @@ const FormFooter = () => {
                   border: `1px solid ${themeObj[theme].br1}`,
                   background: `linear-gradient(180deg, ${themeObj[theme].grd1}, ${themeObj[theme].grd2} 60%)`,
                   maxWidth: "400px",
-                  minWidth: "240px",
+                  minWidth: "300px",
                 }}
               >
                 <div>{f.username}</div>
