@@ -216,7 +216,7 @@ const FormFooter = () => {
 
       {feedbacks && (
         <div
-          className="media d-flex flex-wrap fb-m overflow-auto"
+          className="media fb-m overflow-auto"
           style={{ color: themeObj[theme].tx2 }}
         >
           {feedbacks.map((f, i) => {
@@ -389,6 +389,13 @@ const StyledWrapper = styled.div`
     100% {
       transform: translateY(5px);
     }
+  }
+  .fb-m {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(clamp(300px, 10vw, 400px), 1fr)
+    );
   }
 
   .fb-m::-webkit-scrollbar {
