@@ -216,7 +216,7 @@ const FormFooter = () => {
 
       {feedbacks && (
         <div
-          className="media d-flex fb-m overflow-auto"
+          className="media d-flex flex-wrap fb-m overflow-auto"
           style={{ color: themeObj[theme].tx2 }}
         >
           {feedbacks.map((f, i) => {
@@ -228,8 +228,6 @@ const FormFooter = () => {
                   color: themeObj[theme].tx2,
                   border: `1px solid ${themeObj[theme].br1}`,
                   background: `linear-gradient(180deg, ${themeObj[theme].grd1}, ${themeObj[theme].grd2} 60%)`,
-                  maxWidth: "400px",
-                  minWidth: "300px",
                 }}
               >
                 <div>{f.username}</div>
@@ -390,10 +388,6 @@ const StyledWrapper = styled.div`
     100% {
       transform: translateY(5px);
     }
-  }
-
-  .fb-m {
-    max-width: 100%;
   }
 
   .fb-m::-webkit-scrollbar {
